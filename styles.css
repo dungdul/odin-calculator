@@ -40,8 +40,22 @@ body {
 button {
     flex: 1;
     font-size: 30px;
+    border: 1px solid grey;
+    border-radius: 8px;
+}
+
+button:hover {
+    border: 1px solid black;
+}
+
+.digit {
+    background-color: white;
+}
+
+.operator, #equal {
+    background-color: rgb(255, 204, 0);
 }
 
 .selected {
-    background-color: yellow;
+    background-color: snow;
 }
