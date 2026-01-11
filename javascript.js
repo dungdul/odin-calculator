@@ -1,9 +1,11 @@
-let number1 = 0;
-let number2 = 0;
-let operator = null;
+let number1 = "";
+let number2 = "";
+let operation = "";
 
 function operate() {
-    switch (operator) {
+    number1 = +number1;
+    number2 = +number2;
+    switch (operation) {
         case "add":
             return number1 + number2;
         case "subtract":
@@ -26,12 +28,46 @@ function updateDisplay() {
         displayDiv.textContent = 0;
     }
 
-    // Highlight currently selected operator
-    const operatorButtons = document.querySelectorAll(".operator");
-    operatorButtons.forEach(button => {
+    // Highlight currently selected operation
+    const operationButtons = document.querySelectorAll(".operation");
+    operationButtons.forEach(button => {
         button.classList.remove("selected");
-        if (button.id === operator) {
+        if (button.id === operation) {
             button.classList.add("selected");
         }
     })
 }
+
+function updateNumber(digit) {
+    if (!operation) {
+        number1 += digit;
+    } else {
+        number2 += digit;
+    }
+}
+
+// Update number when a digit button is pressed
+document.querySelectorAll(".digit").forEach(button => {
+    button.addEventListener("click", () => {
+        updateNumber(button.textContent);
+        updateDisplay();
+    })
+})
+
+// Update operation when an operation button is pressed
+document.querySelectorAll(".operation").forEach(button => {
+    button.addEventListener("click", () => {
+        operation = button.id;
+        updateDisplay();
+    })
+})
+
+// The clear button
+document.querySelector("#clear").addEventListener("click", () => {
+    number1 = "";
+    number2 = "";
+    operation = "";
+    updateDisplay();
+})
+
+updateDisplay();

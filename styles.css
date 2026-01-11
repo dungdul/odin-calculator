@@ -52,7 +52,7 @@ button:hover {
     background-color: white;
 }
 
-.operator, #equal {
+.operation, #equal {
     background-color: rgb(255, 204, 0);
 }
 
