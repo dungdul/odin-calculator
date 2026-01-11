@@ -5,16 +5,28 @@ let operation = "";
 function operate() {
     number1 = +number1;
     number2 = +number2;
+
+    // Calculate the result
+    let result;
     switch (operation) {
         case "add":
-            return number1 + number2;
+            result = number1 + number2;
+            break;
         case "subtract":
-            return number1 - number2;
+            result = number1 - number2;
+            break;
         case "multiply":
-            return number1 * number2;
+            result = number1 * number2;
+            break;
         case "divide":
-            return number1 / number2;
+            result = number1 / number2;
+            break;
     }
+
+    // Update numbers and operation
+    number1 = String(result);
+    number2 = "";
+    operation = "";
 }
 
 function updateDisplay() {
@@ -62,11 +74,17 @@ document.querySelectorAll(".operation").forEach(button => {
     })
 })
 
-// The clear button
+// Clear button
 document.querySelector("#clear").addEventListener("click", () => {
     number1 = "";
     number2 = "";
     operation = "";
+    updateDisplay();
+})
+
+// Call operate() when the equal button is pressed
+document.querySelector("#equal").addEventListener("click", () => {
+    operate();
     updateDisplay();
 })
 
