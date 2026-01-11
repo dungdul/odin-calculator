@@ -3,6 +3,10 @@ let number2 = "";
 let operation = "";
 
 function operate() {
+    // Don't do anything if operation isn't specified yet
+    // By checking only the operation, user can input a negative number. For example, by pressing - and 2 then = , number1 becomes 0 and number2 becomes 2, the result is 0 - 2 which is -2.
+    if (!operation) return;
+
     number1 = +number1;
     number2 = +number2;
 
@@ -22,6 +26,9 @@ function operate() {
             result = number1 / number2;
             break;
     }
+
+    // Round the result
+    result = Math.round(result * 10 ** 6) / 10 ** 6;
 
     // Update numbers and operation
     number1 = String(result);
