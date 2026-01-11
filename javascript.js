@@ -2,6 +2,8 @@ let number1 = "";
 let number2 = "";
 let operation = "";
 
+const displayDiv = document.querySelector("#display");
+
 function operate() {
     // Don't do anything if operation isn't specified yet
     // By checking only the operation, user can input a negative number. For example, by pressing - and 2 then = , number1 becomes 0 and number2 becomes 2, the result is 0 - 2 which is -2.
@@ -23,6 +25,12 @@ function operate() {
             result = number1 * number2;
             break;
         case "divide":
+            // Check for division by 0
+            if (number2 === 0) {
+                alert("Unfortunately, dividing by zero doesn't simply result in infinity.")
+                return;
+            }
+
             result = number1 / number2;
             break;
     }
@@ -38,7 +46,6 @@ function operate() {
 
 function updateDisplay() {
     // Update number in display panel
-    const displayDiv = document.querySelector("#display");
     if (number2) {
         displayDiv.textContent = number2;
     } else if (number1) {
