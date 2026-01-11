@@ -1,6 +1,9 @@
-let number1 = "";
-let number2 = "";
+let number1 = "0";
+let number2 = "0";
 let operation = "";
+
+// To keep track if the operation is just done. If that is the case, when user presses a digit button, number1 should be overwritten, not appended
+let operationDone = true;
 
 const displayDiv = document.querySelector("#display");
 
@@ -28,6 +31,8 @@ function operate() {
             // Check for division by 0
             if (number2 === 0) {
                 alert("Unfortunately, dividing by zero doesn't simply result in infinity.")
+                number1 = String(number1);
+                number2 = String(number2);
                 return;
             }
 
@@ -66,9 +71,15 @@ function updateDisplay() {
 
 function updateNumber(digit) {
     if (!operation) {
-        number1 += digit;
+        number1 = 
+            number1 === "0" 
+            ? digit 
+            : number1 + digit;
     } else {
-        number2 += digit;
+        number2 = 
+            number2 === "0"
+            ? digit
+            : number2 + digit;
     }
 }
 
