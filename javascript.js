@@ -30,7 +30,7 @@ function operate() {
 }
 
 function updateDisplay() {
-    // Update number displayed
+    // Update number in display panel
     const displayDiv = document.querySelector("#display");
     if (number2) {
         displayDiv.textContent = number2;
@@ -69,6 +69,9 @@ document.querySelectorAll(".digit").forEach(button => {
 // Update operation when an operation button is pressed
 document.querySelectorAll(".operation").forEach(button => {
     button.addEventListener("click", () => {
+        // Call operate() if there are already two numbers
+        if (number2) operate();
+
         operation = button.id;
         updateDisplay();
     })
