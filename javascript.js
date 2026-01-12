@@ -43,6 +43,7 @@ function operate() {
     // Update numbers and operation
     numbers = [String(result), ""];
     operation = "";
+    operationDone = true;
 }
 
 function updateDisplay() {
@@ -84,6 +85,12 @@ function updateNumber(index, digit) {
 // Update number when a digit button is pressed
 document.querySelectorAll(".digit").forEach(button => {
     button.addEventListener("click", () => {
+        // Reset numbers if an operation has just been done
+        if (operationDone) {
+            numbers[0] = "";
+        }
+        operationDone = false;
+
         if (!operation) {
             updateNumber(0, button.textContent);
         } else {
@@ -99,6 +106,9 @@ document.querySelectorAll(".operation").forEach(button => {
         // Call operate() if there are already two numbers
         if (numbers[1]) operate();
 
+        // Without this part, if user type in 1 + 5 - 3, for example, after 6 is calculated and operationDone becomes true, when user presses 3, 6 will be deleted.
+        operationDone = false;
+        
         operation = button.id;
         updateDisplay();
     })
@@ -108,6 +118,7 @@ document.querySelectorAll(".operation").forEach(button => {
 document.querySelector("#clear").addEventListener("click", () => {
     numbers = ["", ""];
     operation = "";
+    operationDone = false;
     updateDisplay();
 })
 
