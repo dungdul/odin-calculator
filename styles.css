@@ -6,6 +6,7 @@
 }
 
 body {
+    background-color: black;
     height: 100vh;
     display: flex;
     justify-content: center;
@@ -13,43 +14,45 @@ body {
 }
 
 .calculator {
+    background-color: rgb(145, 145, 145);
     width: 360px;
-    height: 480px;;
-    border: 2px solid grey;
-    border-radius: 6px;
-    padding: 12px;
+    height: 500px;;
+    border-radius: 12px;
+    padding: 16px;
     display: flex;
     flex-direction: column;
-    gap: 12px
+    gap: 8px
 }
 
 .row {
     display: flex;
-    gap: 12px;
+    gap: 8px;
     flex: 1;
 }
 
 #display {
+    background-color: white;
+    border: 2px solid black;
     font-size: 36px;
     justify-content: end;
     align-items: center;
-    border: 2px solid grey;
+    border-radius: 8px;
     padding: 0 18px
 }
 
 button {
     flex: 1;
     font-size: 30px;
-    border: 1px solid grey;
+    border: 2px solid grey;
     border-radius: 8px;
 }
 
 button:hover {
-    border: 1px solid black;
+    border: 2px solid black;
 }
 
 #clear {
-    flex: 3.4;
+    flex: 3.35;
 }
 
 #backspace {
