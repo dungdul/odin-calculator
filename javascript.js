@@ -41,8 +41,7 @@ function operate() {
     result = Math.round(result * 10 ** 6) / 10 ** 6;
 
     // Update numbers and operation
-    numbers[0] = String(result);
-    numbers[1] = "";
+    numbers = [String(result), ""];
     operation = "";
 }
 
@@ -74,6 +73,10 @@ function updateNumber(index, digit) {
             numbers[index] = digit;
         }
     } else {
+        // Skip if user inputs a dot while there is already a dot
+        if (digit === "." && numbers[index].includes(".")) {
+            return;
+        }
         numbers[index] += digit;
     }
 }
@@ -103,8 +106,7 @@ document.querySelectorAll(".operation").forEach(button => {
 
 // Clear button
 document.querySelector("#clear").addEventListener("click", () => {
-    numbers[0] = "";
-    numbers[1] = "";
+    numbers = ["", ""];
     operation = "";
     updateDisplay();
 })
