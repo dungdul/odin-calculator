@@ -128,4 +128,14 @@ document.querySelector("#equal").addEventListener("click", () => {
     updateDisplay();
 })
 
+// Backspace button
+document.querySelector("#backspace").addEventListener("click", () => {
+    if (!operation) {
+        numbers[0] = numbers[0].slice(0, -1);
+    } else {
+        numbers[1] = numbers[1].slice(0, -1);
+    }
+    updateDisplay();
+})
+
 updateDisplay();
